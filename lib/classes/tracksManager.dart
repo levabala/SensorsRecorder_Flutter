@@ -1,5 +1,5 @@
 import 'track.dart';
-import 'dart:math' show Random, pow;
+import 'dart:math' show Random;
 
 class _TracksManager {
   List<Track> tracks = [
@@ -32,8 +32,6 @@ class _TracksManager {
         endTime: DateTime(2018, 7, endday, endhour, endminute, endms),
       ));
     }
-
-    print(tracks.length);
   }
 }
 

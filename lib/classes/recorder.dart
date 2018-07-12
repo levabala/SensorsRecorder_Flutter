@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Recorder {
   bool recordProp1, recordProp2, recordProp3;
   Recorder(
