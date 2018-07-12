@@ -2,6 +2,7 @@ import 'sensor.dart';
 import 'dart:async';
 import 'package:sensors/sensors.dart';
 import 'package:flutter/widgets.dart';
+import 'package:observable/observable.dart';
 
 class _SensorsWidget extends StatefulWidget {
   @override
