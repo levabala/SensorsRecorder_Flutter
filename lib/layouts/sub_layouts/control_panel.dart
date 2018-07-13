@@ -2,95 +2,113 @@ import 'package:flutter/material.dart';
 import '../../classes/recorder.dart';
 
 class ControlPanel extends StatefulWidget {
-  final Recorder recorder;
-  ControlPanel({@required this.recorder});
+  ControlPanel();
   @override
-  createState() => ControlPanelState(recorder: recorder);
+  createState() => ControlPanelState();
 }
 
 class ControlPanelState extends State<ControlPanel> {
-  final Recorder recorder;
-  ControlPanelState({@required this.recorder});
+  ControlPanelState();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-          border: Border.all(width: 2.0, color: Colors.black12),
-          borderRadius: const BorderRadius.all(const Radius.circular(2.0))),
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+            border: Border.all(width: 2.0, color: Colors.black12),
+            borderRadius: const BorderRadius.all(const Radius.circular(2.0))),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 40.0),
+          child: Column(
             children: <Widget>[
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text("Record prop1:"),
-                  Switch(
-                      value: recorder.recordProp1,
-                      onChanged: (value) {
-                        setState(() {
-                          recorder.recordProp1 = !recorder.recordProp1;
-                        });
-                      })
+                  Flexible(
+                    child: TextField(
+                      decoration: InputDecoration(hintText: "track name"),
+                    ),
+                  ),
                 ],
               ),
-              RaisedButton(
-                textTheme: ButtonTextTheme.primary,
-                child: Text("Stop"),
-                onPressed: () {},
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text("Record prop1:"),
+                      Switch(
+                          value: Recorder.recordProp1,
+                          onChanged: (value) {
+                            setState(() {
+                              Recorder.recordProp1 = !Recorder.recordProp1;
+                            });
+                          })
+                    ],
+                  ),
+                  Recorder.recording
+                      ? RaisedButton(
+                          color: Theme.of(context).accentColor,
+                          textTheme: ButtonTextTheme.primary,
+                          child: Text("Stop"),
+                          onPressed: () {
+                            setState(() {
+                              Recorder.stopRecording();
+                            });
+                          },
+                        )
+                      : RaisedButton(
+                          textTheme: ButtonTextTheme.primary,
+                          child: Text("Start"),
+                          onPressed: () {
+                            setState(() {
+                              Recorder.startRecording();
+                            });
+                          },
+                        ),
+                ],
+              ),
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text("Record prop2:"),
+                      Switch(
+                          value: Recorder.recordProp2,
+                          onChanged: (value) {
+                            setState(() {
+                              Recorder.recordProp2 = !Recorder.recordProp2;
+                            });
+                          })
+                    ],
+                  ),
+                  Recorder.paused
+                      ? RaisedButton(
+                          color: Theme.of(context).accentColor,
+                          textTheme: ButtonTextTheme.primary,
+                          child: Text("Resume"),
+                          onPressed: () {
+                            setState(() {
+                              Recorder.continueRecording();
+                            });
+                          },
+                        )
+                      : RaisedButton(
+                          textTheme: ButtonTextTheme.primary,
+                          child: Text("Pause"),
+                          onPressed: () {
+                            setState(() {
+                              Recorder.pauseRecording();
+                            });
+                          },
+                        ),
+                ],
               ),
             ],
           ),
-          Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text("Record prop2:"),
-                  Switch(
-                      value: recorder.recordProp2,
-                      onChanged: (value) {
-                        setState(() {
-                          recorder.recordProp2 = !recorder.recordProp2;
-                        });
-                      })
-                ],
-              ),
-              RaisedButton(
-                textTheme: ButtonTextTheme.primary,
-                child: Text("Pause"),
-                onPressed: () {},
-              ),
-            ],
-          ),
-          Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text("Record prop3:"),
-                  Switch(
-                      value: recorder.recordProp3,
-                      onChanged: (value) {
-                        setState(() {
-                          recorder.recordProp3 = !recorder.recordProp3;
-                        });
-                      })
-                ],
-              ),
-              RaisedButton(
-                textTheme: ButtonTextTheme.primary,
-                child: Text("Start"),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }

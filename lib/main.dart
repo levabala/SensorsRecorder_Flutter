@@ -5,15 +5,13 @@ import 'layouts/sensors_recording.dart';
 
 void main() => runApp(new MyApp());
 
-Recorder recorder = Recorder();
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "SensorsRecorder",
-      home: SensorsRecording(recorder: recorder),
+      home: SensorsRecording(),
       theme: ThemeData(
           primaryColor: Color(0xFF616161),
           primaryColorLight: Color(0xFF8e8e8e),

@@ -7,7 +7,6 @@ class Sensor {
   Stream stream;
 
   bool get available {
-    print(stream);
     return stream != null;
   }
 

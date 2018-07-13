@@ -32,8 +32,6 @@ class _TracksManager {
         endTime: DateTime(2018, 7, endday, endhour, endminute, endms),
       ));
     }
-
-    print(tracks.length);
   }
 }
 

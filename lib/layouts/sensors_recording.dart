@@ -6,15 +6,13 @@ import '../classes/recorder.dart';
 import 'recorded_tracks.dart';
 
 class SensorsRecording extends StatefulWidget {
-  final Recorder recorder;
-  SensorsRecording({@required this.recorder});
+  SensorsRecording();
   @override
-  createState() => SensorsRecordingState(recorder: recorder);
+  createState() => SensorsRecordingState();
 }
 
 class SensorsRecordingState extends State<SensorsRecording> {
-  final Recorder recorder;
-  SensorsRecordingState({@required this.recorder});
+  SensorsRecordingState();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -35,11 +33,9 @@ class SensorsRecordingState extends State<SensorsRecording> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Expanded(
-            child: SensorsToRecord(recorder: recorder),
+            child: SensorsToRecord(),
           ),
-          ControlPanel(
-            recorder: recorder,
-          )
+          ControlPanel()
         ],
       ),
     );

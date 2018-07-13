@@ -5,15 +5,13 @@ import '../../classes/sensor.dart';
 import 'dart:async';
 
 class SensorsToRecord extends StatefulWidget {
-  final Recorder recorder;
-  SensorsToRecord({@required this.recorder});
+  SensorsToRecord();
   @override
-  createState() => SensorsToRecordState(recorder: recorder);
+  createState() => SensorsToRecordState();
 }
 
 class SensorsToRecordState extends State<SensorsToRecord> {
-  final Recorder recorder;
-  SensorsToRecordState({@required this.recorder});
+  SensorsToRecordState();
 
   void listenForStreams() async {
     Future listen(Stream<Sensor> stream) async {
@@ -25,6 +23,12 @@ class SensorsToRecordState extends State<SensorsToRecord> {
     }
 
     listen(SensorsManager.initializeSensorsStreams());
+  }
+
+  @override
+  void initState() {
+    listenForStreams();
+    super.initState();
   }
 
   @override
