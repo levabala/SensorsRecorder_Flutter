@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:sensors/sensors.dart';
 import 'classes/recorder.dart';
 import 'layouts/sensors_recording.dart';
+import 'classes/model_widget.dart';
 
 void main() => runApp(new MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "SensorsRecorder",
-      home: SensorsRecording(),
+      home: ModelWidget(SensorsRecording()),
       theme: ThemeData(
           primaryColor: Color(0xFF616161),
           primaryColorLight: Color(0xFF8e8e8e),

@@ -4,6 +4,8 @@ import 'sub_layouts/recording_sensors.dart';
 import 'sub_layouts/control_panel.dart';
 import '../classes/recorder.dart';
 import 'recorded_tracks.dart';
+import 'users.dart';
+import 'login.dart';
 
 class SensorsRecording extends StatefulWidget {
   SensorsRecording();
@@ -28,7 +30,8 @@ class SensorsRecordingState extends State<SensorsRecording> {
           )
         ],
       ),
-      body: Column(
+      body:
+          LoginPage(), /*Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -37,7 +40,7 @@ class SensorsRecordingState extends State<SensorsRecording> {
           ),
           ControlPanel()
         ],
-      ),
+      ),*/
     );
   }
 }
